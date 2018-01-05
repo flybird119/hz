@@ -1,0 +1,36 @@
+.box_white{
+    background-color: #fff;
+    border-radius: 4px;
+    padding:10px;
+    margin:0;
+    letter-spacing: 1px;
+    text-align: justify;
+    font:normal 400 12px  "微软雅黑";
+    min-height: 95px;
+    line-height: 18px;
+
+}
+
+.img_pad{
+    padding: 0 5px 0 0 ;
+}
+
+.ord_title {
+    height: 15px;
+    margin: 17px -15px 10px -15px;
+}
+
+.q{
+    font:normal 600 12px  "微软雅黑";
+    color:#ff5956;
+    letter-spacing: 3px;
+}
+
+.ans{
+    font:normal 800 12px  "微软雅黑";
+    color:#3c3c3c;
+}
+
+.tmp {
+    height: 50px;
+}

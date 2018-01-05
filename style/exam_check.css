@@ -1,0 +1,68 @@
+.box_normal{
+    background-color: #fff;
+    border:1px dashed #cccccc;
+    border-radius:5px;
+
+}
+
+.banner{
+    height:86px;
+}
+.banner_btn{
+    margin-top: 27px;
+    height:45px;
+    border-radius:5px;
+    padding-top: 12px;
+}
+
+.banner_top_mid {
+    height:30px;
+    border-radius:5px;
+    padding-top:5px ;
+}
+
+.banner_top{
+    position: relative;
+    top:18px;
+}
+
+.banner_top_left{
+    background:url(../img/banner_top_left.png) no-repeat 100% 50%;
+    height:23px;
+}
+.banner_top_right{
+    background:url(../img/banner_top_right.png) no-repeat 0% 50%;
+    height:23px;
+}
+
+.banner_question{
+    background-color: #fff;
+    border:1px dashed #cccccc;
+    border-radius:5px;
+    margin: 55px 15px 15px 15px;
+}
+
+.banner_title{
+    margin-top: -18px;
+}
+
+a:hover{
+    text-decoration : none;
+    color:#cccccc;
+}
+
+.tb{
+    padding: 15px;
+}
+
+.tbh{
+    padding:15px;
+}
+
+.score{
+    background-color:#f0f0f0;
+    height:40px;
+    padding:10px;
+    margin:10px;
+
+}

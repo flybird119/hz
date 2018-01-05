@@ -1,0 +1,98 @@
+.player{
+    height:210px;
+    background-color: #000;
+}
+.tab_mid{
+    background-color:#fff ;
+    height:44px;
+}
+
+.tab_page{
+    margin:10px 5px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+
+}
+.t_page{
+    border: 1px dashed #af4645;
+    margin:10px 5px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.tab_menu{
+    height:44px;
+    text-align: center;
+    padding-top: 10px;
+    font: normal 400  14px “微软雅黑”;
+    color:#333333;
+    letter-spacing: 3px;
+}
+
+.tab_menu:focus{
+    background:#af4645;
+    color:#fff;
+}
+
+
+.vid-wrapper{
+    width:100%;
+    position:relative;
+    padding:0;
+}
+
+.c_border{
+    background-color: #fff;
+    border: 1px dashed #af4645;
+    border-radius: 5px;
+    margin: 1px 0 1px 0;
+    padding: 15px;
+}
+.t_title{
+    margin: 10px 0 1px 0;
+}
+.w_title{
+    font-size: 14px;
+    font-weight: 600;
+    color:#9d3033;
+    padding-top: 1px;
+}
+.c_contect{
+    font-size: 12px;
+    font-weight: 500;
+}
+.b_bottom{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+}
+.b_price{
+    font-size: 14px;
+    font-weight: 600;
+    color:#9d3033;
+}
+.b_payType{
+    font-size: 10px;
+    font-weight: 600;
+    color:#cccccc;
+}
+.b_pay{
+    background-color: #fff;
+    border-top:1px solid #cccccc;
+    padding-top: 10px;
+}
+.b_sale{
+    background-color: #9d3033;
+    color:#fff;
+    font-weight: 800;
+    padding: 15px;
+}
+.b_che{
+    background-color: #af4645;
+    padding: 15px;
+}
+.l_img{
+    height: 25px;
+    padding-bottom: 5px;
+}

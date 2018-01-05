@@ -1,0 +1,149 @@
+.banner{
+    height:86px;
+}
+.banner_btn{
+    margin-top: 27px;
+    height:45px;
+    border-radius:5px;
+    padding-top: 12px;
+}
+
+.btn_01{
+    background-color:#4673b7;
+}
+.btn_01:hover{
+    background-color:#194593  ;
+    color: #fff;
+}
+
+.btn_02{
+    background-color:#468fae ;
+}
+.btn_02:hover{
+    background-color:#19698b  ;
+    color: #fff;
+}
+
+.btn_03{
+    background-color:#b26f46  ;
+}
+.btn_03:hover{
+    background-color:#884522 ;
+    color: #fff;
+}
+
+
+.banner_top_mid {
+    height:30px;
+    border-radius:5px;
+    padding-top:5px ;
+}
+
+.banner_top{
+    position: relative;
+    top:18px;
+}
+
+.banner_top_left{
+    background:url(../img/banner_top_left.png) no-repeat 100% 50%;
+    height:23px;
+}
+.banner_top_right{
+    background:url(../img/banner_top_right.png) no-repeat 0% 50%;
+    height:23px;
+}
+
+
+.chapter {
+    margin-top: 20px;
+}
+
+.chapter_left {
+    height:30px;
+    border-radius:5px 0px 0px 5px;
+    padding-top: 6px;
+}
+.chapter_triangle {
+    height:30px;
+    background: url(../img/chapter_triangle.png) no-repeat;
+    border-bottom: solid #af4645 2px;
+}
+
+.chapter_right {
+    height: 30px;
+    border-bottom: solid #af4645 2px;
+    padding-top: 6px;
+}
+
+.catagory{
+    height: 33px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color:#333333;
+    padding-top: 5px;
+    padding-left:40px ;
+}
+
+.catagory:hover{
+    color:#af4645;
+    border:solid #af4645 2px ;
+    font-weight: 600;
+}
+
+.catagory_span{
+    padding-right: 30px;
+    padding-top: 2px;
+    color: #999999;
+}
+
+
+.counter{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.question{
+    padding: 15px;
+}
+.questionBtn{
+    margin-top: 15px;
+}
+
+.items{
+    padding: 0px 15px ;
+
+}
+
+.banner_question{
+    background-color: #fff;
+    border:1px dashed #cccccc;
+    border-radius:5px;
+    margin:15px;
+}
+
+.banner_title{
+    margin-top: 15px;
+}
+
+a:hover{
+    text-decoration : none;
+    color:#cccccc;
+}
+
+.result{
+    margin:0px 15px;
+}
+
+.result_title{
+    color:#af4645
+}
+
+.result_des{
+    color:#999999;
+}
+
+.btn_next{}
+.btn_pre{}

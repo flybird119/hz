@@ -1,0 +1,36 @@
+.catagory{
+    height:20px;
+    border-bottom: dashed 1px #fff;
+    font-family: 微软雅黑;
+    font-size: 12px;
+    color:#333333;
+    margin: 15px 30px 0px 30px;
+}
+
+.catagory:hover{
+    color:#af4645;
+    font-weight: 600;
+}
+
+.list_div{
+    margin:15px;
+    padding-left: 30px;
+    color: #666666;
+    font-size: 12px;
+}
+
+.list_div:hover{
+    color:#af4645;
+    font-weight: 600;
+}
+
+.secs{
+    display: none;
+}
+
+.t_text{
+    margin:30px 0px 15px 0px;
+
+}
+
+

@@ -1,0 +1,44 @@
+.ip {
+    min-height: 250px;
+    max-height: 350px;
+    width: 95%;
+    display: block;
+    margin: 10px auto;
+    resize: none;
+    border-radius: 4px;
+    border: 1px dashed #c9302c;
+}
+
+
+
+.img_pad{
+    padding: 0 5px 0 0 ;
+}
+
+.ord_title {
+    height: 20px;
+    margin: 15px -15px 5px -15px;
+}
+
+.q{
+    font:normal 400 12px  "微软雅黑";
+    color:#3c3c3c;
+    letter-spacing: 3px;
+}
+
+.btn_spr{
+    width:100%;
+    margin-top:10px;
+}
+.btn_cls{
+    width:100%;
+    margin-top:10px;
+}
+
+.no_pad{
+    padding:5px 0;
+}
+
+#code{
+    margin-top: 3px;
+}

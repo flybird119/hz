@@ -1,0 +1,39 @@
+.tips{
+    height:20px;
+    color:#666;
+    font-size: 10px;
+    background-color: #fff;
+}
+
+.tip_1{
+    margin:5px;
+}
+
+.bg_w{
+    height:45px;
+}
+
+.btn_code{
+    width:100%;
+    font-size: 12px;
+}
+
+.tmp{
+    height:30px;
+}
+
+.des{
+    font-weight: 600;
+    margin:6px;
+    min-width: 70px;
+}
+
+.errin{
+    border:1px solid darkred;
+}
+.sucin{
+    border:1px solid darkgreen;;
+}
+.btn_ch{
+    width:100%;
+}
