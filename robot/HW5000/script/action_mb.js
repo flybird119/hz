@@ -1,8 +1,6 @@
-
 $(document).ready(function () {
     man = new Robot();
     man.init();
-
     $(".btn_blue").on("touchstart ", function () {
         var id=this.id;
         var btn_id = id.split("_")[1];
@@ -17,46 +15,43 @@ $(document).ready(function () {
         var x = this.id.substr(5, 2);
         if (man.stat.shield === 1 ) {//判断进入屏蔽菜单
             var z = parseInt(x.substr(1,1));
-            if(man.stat.nc_flag===1&&man.res.shield_code.length<2){//判断输入类型，1为设备代码0为设备号
+            if(man.stat.nc_flag===1){//判断输入类型，1为设备代码0为设备号
                 if(z>3){
                     return;
                 }
                 man.res.shield_code += man.switch_shiled_inp(x,z);
-                if(man.res.shield_code.length===2) {
-                    man.res.shield_code += man.switch_shiled_code(man.res.shield_code);
-
+                if(man.res.shield_code.length>2) {
+                    man.res.shield_code = man.res.shield_code.slice(-1);
                 }
                 man.draw_shield(man.res.shield_num, man.res.shield_code);
             }else{
-                if(z>3||man.res.shield_num.length>7){
+                if(z>3){
                     return;
                 }
-                man.res.shield_num += man.switch_shiled_inp(x,z);
-                man.draw_shield(man.res.shield_num,man.res.shield_code);s
+                man.res.shield_num+=man.switch_shiled_inp(x,z);
+                if(man.res.shield_num.length>6){
+                    man.res.shield_num = (man.res.shield_num+man.switch_shiled_inp(x,z)).slice(-1);
+                }
+                man.draw_shield(man.res.shield_num,man.res.shield_code);
             }
         }
     });
-
     $(".red").on("touchstart ", function () {
         var id=this.id;
         var btn_id = id.split("_")[1];
         $("#red_"+btn_id).removeClass("red_"+btn_id+"_0");
         $("#red_"+btn_id).addClass("red_"+btn_id+"_2");
     });
-
     $(".red").on("touchend ", function () {
         var id=this.id;
         var btn_id = id.split("_")[1];
         $("#red_"+btn_id).removeClass("red_"+btn_id+"_2");
         $("#red_"+btn_id).addClass("red_"+btn_id+"_0");
     });
-
-
     $(".mul_red").on("touchstart ", function () {
         var id=this.id;
         $("#"+id).find("img").attr("src", "img/mul_red_1.png");
     });
-
     $(".mul_red").on("touchend ", function () {
         var id = this.id;
         $("#" + id).find("img").attr("src", "img/mul_red_0.png");
@@ -79,12 +74,9 @@ $(document).ready(function () {
 
         }
 
-
-
     });
-
     $("#blue_11").on("touchend ", function () {
-        if(man.stat.reset===1 ||man.stat.shield===1){
+        if(man.stat.reset===1 ||man.stat.shield===1 || man.stat.self_check===1||man.stat.his_rec===1 || man.stat.set_start_mod===1 || man.stat.pwd ===1){
             return;
         }
         if(man.scrn.rec_check.menu_show===1){
@@ -101,38 +93,33 @@ $(document).ready(function () {
             man.scrn.self_check.menu_show=0;
             man.play_sc();
             man.draw_ani();
-            return;
         }
 
 
     });
-
     $("#blue_14").on("touchend ", function () {
         if(man.stat.set_start_mod===1){
             man.scrn.start_mod.index= Math.abs(man.scrn.start_mod.index-1);
             man.draw_start_mod();
         }
         if(man.stat.shield===1){//屏蔽菜单下
-            if(man.stat.nc_flag===0){
-                man.stat.nc_flag=1;//nc_flag为1，为输入屏蔽代码
-            }else {
-                man.stat.nc_flag=0;//nc_flag为1，为输入屏蔽代码
-            }
-
+            man.stat.nc_flag=Math.abs(man.stat.nc_flag-1);
             man.draw_shield(man.res.shield_num,man.res.shield_code);
         }
     });
-
-
     $("#blue_15").on("touchend ", function () {
         if(man.stat.set_start_mod===1){
             man.switch_start_mod();
         }
     });
-
-
     $("#blue_21").on("touchend ", function () {
         if(man.ck_stat()){
+            return;
+        }
+        if(man.ck_stat_1()){
+            return;
+        }
+        if(man.scrn.self_check.menu_show===1 || man.scrn.rec_check.menu_show===1 || man.stat.pwd===1){
             return;
         }
         if(man.stat.shield===1){
@@ -156,14 +143,17 @@ $(document).ready(function () {
             return;
         }
         man.stat.shield=1;
+        man.stat.nc_flag=0;
+        man.res.shield_num='';
+        man.res.shield_code='';
         man.draw_shield(man.res.shield_num,man.res.shield_code);
     });
-
     $("#blue_22").on("touchend ", function () {
         if(man.ck_stat()){
             return;
         }
-        if(man.stat.shield===1){
+        if(man.ck_stat_1()){return;}
+        if(man.scrn.self_check.menu_show===1 || man.stat.shield===1 || man.scrn.rec_check.menu_show===1|| man.stat.pwd ===1){
             return;
         }
         if(man.scrn.rec_check.his_rec_list===1){
@@ -189,23 +179,21 @@ $(document).ready(function () {
         man.res.shield_code="";
         man.draw_shield(man.res.shield_num,man.res.shield_code);
     });
-
     $("#blue_25").on("touchend ", function () {
         if(man.stat.set_start_mod===1){
             man.switch_start_mod();
         }
     });
-
-
-
     $("#blue_34").on("touchend ", function () {
         if(man.ck_stat()){
+            return;
+        }
+        if(man.scrn.self_check.menu_show===1 || man.stat.shield===1 || man.scrn.rec_check.menu_show===1){
             return;
         }
         man.draw_pwd_box();
         man.stat.pwd=1;
     });
-
     $("#blue_35").on("touchend ", function () {
         if(man.ck_stat()){
             return;
@@ -218,6 +206,7 @@ $(document).ready(function () {
             return;
         }
         if(man.stat.set_start_mod===1){
+            man.stat.set_start_mod=0;
             man.draw_clean_scrn();
             man.draw_header();
             man.draw_footer();
@@ -233,12 +222,13 @@ $(document).ready(function () {
             man.draw_shield_srn(man.res.shield_num,man.res.shield_code);
         }
     });
-
     $("#blue_42").on("touchend ", function () {
         if(man.ck_stat()){
             return;
         }
-
+        if(man.scrn.self_check.menu_show===1 || man.stat.shield===1 || man.stat.pwd===1 || man.stat.set_start_mod===1){
+            return;
+        }
         if(man.stat.shield===1){
             return;
         }
@@ -248,7 +238,6 @@ $(document).ready(function () {
         }
 
     });
-
     $("#blue_45").on("touchend ", function () {
         if(man.ck_stat()){
             return;
@@ -274,31 +263,36 @@ $(document).ready(function () {
         if(man.stat.shield_cancel===1||man.stat.shield===1){
             man.stat.shield_cancel=0;
             man.stat.shield=0;
+            man.stat.nc_flag=0;
+            man.res.shield_code='';
+            man.res.shield_num='';
             man.init();
             return;
         }
+        if(man.stat.set_start_mod===1){
+            man.stat.set_start_mod=0;
+            man.scrn_init();
+        }
     });
-
-
     $(".m_key").on("touchend ", function () {
         man.turn_mul_key();
     });
-
     $(".m_selfcheck").on("touchstart", function () {
         var id=this.id;
         $(this).find("img").attr("src", "img/"+id+"_1.png");
     });
-
     $(".m_selfcheck").on("touchend ", function () {
         var id=this.id;
         $(this).find("img").attr("src", "img/"+id+"_0.png");
-
+        if(man.stat.mul_start===0 || man.stat.mul_self_check===1){
+            return;
+        }
+        man.mul_self_check_begin();
+        man.mul_self_check();
     });
-
     $("#red_11").on("touchend ", function () {
         man.stop_snd();
     });
-
     $("#red_12").on("touchend ", function () {
        if(man.stat.alarm===1){
            man.stat.alarm=0;
@@ -308,22 +302,19 @@ $(document).ready(function () {
            man.play_alarm();
        }
     });
-
     $("#red_14").on("touchend ", function () {
         man.stat.reset=1;
         man.reset();
     });
-
     $("#blue_32").on("touchend ", function () {
     });
 
 });
 
-
 function Robot(){
     this.res = {ctx: null, shield_num: "",shield_code:""};
     this.stat={
-        mul_start:0,mul_1:0, mul_2:0, mul_3:0, mul_4:0, mul_5:0, mul_6:0, alarm:0,
+        mul_start:0,mul_self_check:0,mul_1:0, mul_2:0, mul_3:0, mul_4:0, mul_5:0, mul_6:0, alarm:0,
         self_check:0,pwd:0,set_start_mod:0,his_rec:0,shield:0,nc_flag:0,shield_cancel:0
     };
     this.lamp = {
@@ -354,20 +345,19 @@ function Robot(){
         ],his_rec_list:0}
     };
     this.timer={
-        scrn:[],lamp:[],normal:[]
+        scrn:[],lamp:[],normal:[],mul:[]
     };
 
     this.stat.w = this.get_width();
     this.stat.h = this.get_height();
     this.ctx = this.get_ctx();
 }
-
 Robot.prototype.ck_stat=function () {
   return this.stat.self_check===1 || this.stat.reset===1;
 };
-
-
-
+Robot.prototype.ck_stat_1=function () {
+    return this.stat.set_start_mod===1 || this.stat.shield===1 || this.stat.shield_cancel===1||this.stat.his_rec===1;
+};
 Robot.prototype.turn_mul_key = function(){
     if(this.stat.mul_start === 0){
         this.stat.mul_start = 1;
@@ -377,10 +367,8 @@ Robot.prototype.turn_mul_key = function(){
         this.stat.mul_start =0;
         $(".m_key").find("img").attr("src", "img/key_0.png");
         $(".m_work").find("img").attr("src","./img/mul_work_0.png");
-
     }
 };
-
 Robot.prototype.clear_timer = function(){
     for(var i in this.timer){
         for(var j in this.timer[i]){
@@ -389,9 +377,6 @@ Robot.prototype.clear_timer = function(){
     }
 
 };
-
-
-
 Robot.prototype.turn_lamp = function(ele,flag){
     var idd = "#"+ele;
     var id = ele.split("_")[1];
@@ -401,8 +386,6 @@ Robot.prototype.turn_lamp = function(ele,flag){
         $(idd).find("img").attr("src", "img/lamp_0_"+id+".png");
     }
 };
-
-
 Robot.prototype.turn_mul = function(ele,flag){
     var id ="#"+ele;
     var tmp= parseInt(ele.substr(-1,1));
@@ -429,30 +412,23 @@ Robot.prototype.turn_all_mul = function(flag){
         this.turn_mul(i,flag);
     }
 };
-
 Robot.prototype.turn_all_lamp = function(flag){
     for(var i in this.lamp){
         this.turn_lamp(i,flag);
     }
 };
-
-
 Robot.prototype.init = function(){
      this.lamp_init();
      this.mul_init();
      this.scrn_init();
      this.snd_init();
 };
-
-
 Robot.prototype.get_width = function(){
     return $(".screen").width();
 };
-
 Robot.prototype.get_height = function(){
     return $(".screen").height();
 };
-
 Robot.prototype.get_ctx = function(){
     $(".screen").html("<canvas id='can_top' width='" + this.stat.w + "' height='" + this.stat.h + "'/>");
     var c = document.getElementById("can_top");
@@ -462,7 +438,6 @@ Robot.prototype.get_ctx = function(){
     ctx.strokeStyle = "#666";
     return ctx;
 };
-
 Robot.prototype.lamp_init = function(){
     for(var i in this.lamp){
         if(this.lamp[i]===1){
@@ -472,7 +447,6 @@ Robot.prototype.lamp_init = function(){
         }
     }
 };
-
 Robot.prototype.mul_init = function(){
     for(var i in this.mul){
         if(this.mul[i]===1){
@@ -482,15 +456,12 @@ Robot.prototype.mul_init = function(){
         }
     }
 };
-
-
 Robot.prototype.scrn_init = function(){
     this.draw_clean_scrn();
     this.draw_header();
     this.draw_footer();
 
 };
-
 Robot.prototype.draw_header = function(){
     var ctx = this.ctx;
     var old_style = ctx.fillStyle;
@@ -516,7 +487,6 @@ Robot.prototype.draw_header = function(){
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.draw_title_header = function(title_str){
     var ctx = this.ctx;
     var old_style = ctx.fillStyle;
@@ -536,7 +506,6 @@ Robot.prototype.draw_title_header = function(title_str){
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.snd_init=function () {
     if(this.stat.alarm===0){
         this.stop_snd();
@@ -544,9 +513,6 @@ Robot.prototype.snd_init=function () {
         this.play_alarm();
     }
 };
-
-
-
 Robot.prototype.draw_footer = function(){
     var ctx = this.ctx;
     var old_style = ctx.fillStyle;
@@ -583,8 +549,6 @@ Robot.prototype.draw_footer = function(){
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
-
 Robot.prototype.draw_pwd_box = function(){
     this.draw_clean_scrn();
     this.draw_header();
@@ -605,7 +569,6 @@ Robot.prototype.draw_pwd_box = function(){
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.draw_clean_scrn = function () {
     var ctx = this.ctx;
     var old_style = ctx.fillStyle;
@@ -615,14 +578,12 @@ Robot.prototype.draw_clean_scrn = function () {
     var h = this.stat.h;
     ctx.fillStyle="#7a84fb";
     ctx.fillRect(0,0,w,h);
+    ctx.beginPath();
+    ctx.stroke();
     ctx.fillStyle=old_style;
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
-
-
-
 Robot.prototype.draw_start_mod = function () {
     this.draw_clean_scrn();
     this.scrn_init();
@@ -683,7 +644,6 @@ Robot.prototype.draw_start_mod = function () {
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.switch_start_mod=function(){
     switch(this.scrn.start_mod.index){
         case 0:
@@ -698,7 +658,6 @@ Robot.prototype.switch_start_mod=function(){
             break;
     }
 };
-
 Robot.prototype.switch_shiled_inp=function(x,z){
     switch(parseInt(x.substr(0,1))) {
         case 1:
@@ -715,8 +674,6 @@ Robot.prototype.switch_shiled_inp=function(x,z){
             break;
     }
 };
-
-
 Robot.prototype.switch_shiled_code=function(x){
     switch(parseInt(x)) {
         case 1:
@@ -729,9 +686,6 @@ Robot.prototype.switch_shiled_code=function(x){
             return "-未定义";
     }
 };
-
-
-
 Robot.prototype.draw_self_check = function () {
     this.draw_clean_scrn();
     this.scrn_init();
@@ -752,7 +706,6 @@ Robot.prototype.draw_self_check = function () {
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.draw_his_rec = function () {
     this.draw_clean_scrn();
     var str ="浏览运行记录";
@@ -772,7 +725,6 @@ Robot.prototype.draw_his_rec = function () {
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.draw_shield = function (num,code) {
     this.draw_clean_scrn();
     this.scrn_init();
@@ -785,19 +737,18 @@ Robot.prototype.draw_shield = function (num,code) {
     var h = this.stat.h;
     ctx.font = "bold 12px 微软雅黑";
     (man.stat.nc_flag==0)?ctx.strokeStyle="#fff":ctx.strokeStyle="#7a84fb";
-    ctx.strokeRect(w / 6 +tip.length*12, h / 2 - 6, 60, 20);
+    ctx.strokeRect(w / 6 +tip.length*12+5, h / 2 - 6, 60, 20);
     (man.stat.nc_flag==0)?ctx.strokeStyle="#7a84fb":ctx.strokeStyle="#fff";
-    ctx.strokeRect(w / 6 +tip.length*25, h / 2 - 6, 80, 20);
+    ctx.strokeRect(w / 6 +tip.length*25, h / 2 - 6, 90, 20);
     ctx.fillText(tip,w/6-10,h/2+10);
-    ctx.fillText(num, w/6+tip.length*12, h / 2+10);
+    ctx.fillText(num, w/6+tip.length*12+10, h / 2+10);
     ctx.fillText("号",w/6+tip.length*22,h/2+10);
     ctx.font = "bold 12px 微软雅黑";
-    ctx.fillText(code, w / 6 +tip.length*25, h / 2+10);
+    ctx.fillText(code+this.switch_shiled_code(code), w / 6 +tip.length*25+5, h / 2+10);
     ctx.fillStyle=old_style;
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.draw_shield_srn = function (num,code) {
     this.draw_clean_scrn();
     this.draw_footer();
@@ -807,6 +758,8 @@ Robot.prototype.draw_shield_srn = function (num,code) {
     var old_stroke = ctx.strokeStyle;
     var w=this.stat.w;
     var h = this.stat.h;
+    ctx.moveTo(0,40-10);
+    ctx.lineTo(w,40-10);
     ctx.moveTo(0,40*2);
     ctx.lineTo(w,40*2);
     ctx.lineWidth=2;
@@ -818,12 +771,11 @@ Robot.prototype.draw_shield_srn = function (num,code) {
     ctx.fillText("001",10,40*2-15);
     ctx.fillText(d.Format("hh:mm"),w/8, 40*2-15);
     ctx.fillText(num, w/4, 40*2-15);
-    ctx.fillText(code, w / 2 , 40*2-15);
+    ctx.fillText(this.switch_shiled_code(code).slice(1), w / 2 , 40*2-15);
     ctx.fillStyle=old_style;
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
 Robot.prototype.draw_his_rec_list = function () {
     this.draw_clean_scrn();
     var str ="浏览运行记录";
@@ -850,13 +802,6 @@ Robot.prototype.draw_his_rec_list = function () {
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
-
-
-
-
-
-
 Robot.prototype.draw_ani = function () {
     var ctx = this.ctx;
     var old_style = ctx.fillStyle;
@@ -877,8 +822,6 @@ Robot.prototype.draw_ani = function () {
     ctx.font=old_font;
     ctx.strokeStyle = old_stroke;
 };
-
-
 Robot.prototype.__draw_a= function (ctx,w,h,i) {
     var left_ax =0-i%w;
     var right_ax =w-i%w;
@@ -923,7 +866,6 @@ Robot.prototype.__draw_a= function (ctx,w,h,i) {
     ctx.fillText("监控状态",((w/4-l)/2+(w/4)*3-i)%w,h-5);
     ctx.fillText("监控状态",((w/4-l)/2+(w/4)*3-i)%w+w,h-5);
 };
-
 Robot.prototype.__lamp_ani=function(){
     for(var n=0;n<this.timer.lamp.length;n++){
         clearTimeout(this.timer.lamp[n]);
@@ -937,40 +879,39 @@ Robot.prototype.__lamp_ani=function(){
         this.timer.lamp[++i]=setTimeout(this.turn_lamp.bind(this),2000+350*i,s,0)
     }
 };
-
 Robot.prototype.turn_self_check=function (i) {
    this.stat.self_check = i;
 };
-
-
 Robot.prototype.play_alarm=function () {
     $("#bg-music").attr('src',"./media/alarm.mp3");
     audioAutoPlay();
     musicPlay(true);
 };
-
 Robot.prototype.play_sc=function () {
     $("#bg-music").attr('src',"./media/sc.mp3");
     audioAutoPlay();
     musicPlay(true);
 };
-
-
-
 Robot.prototype.stop_snd=function () {
     $("#bg-music").attr('src',"");
     musicPlay(false);
 };
-
 Robot.prototype.mul_self_check=function () {
-    $("#bg-music").attr('src',"");
-    musicPlay(false);
+    for(var m=this.timer.mul.length;--m>=0;){
+        clearTimeout(this.timer.mul[m]);
+    }
+    for(var i =0;i<4;i++){
+        this.timer.mul[i]=setTimeout(this.turn_all_mul.bind(this),1000*i,1);
+        this.timer.mul[i+4]=setTimeout(this.turn_all_mul.bind(this),1000*i+500,0);
+    }
+    this.timer.mul[i+1]=setTimeout(this.mul_self_check_end.bind(this),1000*i);
 };
-
-
-
-
-
+Robot.prototype.mul_self_check_begin=function () {
+    this.stat.mul_self_check=1;
+};
+Robot.prototype.mul_self_check_end=function () {
+    this.stat.mul_self_check=0;
+};
 Robot.prototype.reset=function () {
     this.clear_timer();
     this.stat.self_check=0;
@@ -990,11 +931,9 @@ Robot.prototype.reset=function () {
     this.timer.normal[11]=setTimeout(this.turn_reset.bind(this),5500,0);
 
 };
-
 Robot.prototype.turn_reset=function (i) {
     this.stat.reset=i;
 };
-
 Robot.prototype.close_scrn = function(){
     var ctx = this.ctx;
     var old_style = ctx.fillStyle;
@@ -1009,10 +948,6 @@ Robot.prototype.close_scrn = function(){
     ctx.strokeStyle = old_stroke;
 
 };
-
-
-
-
 function audioAutoPlay() {
     var audio = document.getElementById('bg-music');
     audio.play();
@@ -1020,7 +955,6 @@ function audioAutoPlay() {
         audio.play();
     }, false);
 }
-
 // 音乐播放
 function autoPlayMusic() {
     // 自动播放音乐效果，解决浏览器或者APP自动播放问题
@@ -1042,7 +976,6 @@ function autoPlayMusic() {
 
     document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
 }
-
 function musicPlay(isPlay) {
     var media = document.querySelector('#bg-music');
     if (isPlay && media.paused) {
@@ -1052,20 +985,16 @@ function musicPlay(isPlay) {
         media.pause();
     }
 }
-
 $(function () {
     $("#sj").swipe({
         swipeLeft: function (event, direction, distance, duration, fingerCount) {
             $(".question").animate({width: '0'}, 350);
         },
-
         swipeRight: function (event, direction, distance, duration, fingerCount) {
             $(".question").animate({width: '100%'}, 350);
         }
     });
-
 });
-
 $(".btn_start_test").on("click", function () {
     $.ajax({
         url: "get.php",
@@ -1083,7 +1012,6 @@ $(".btn_start_test").on("click", function () {
         }
     });
 });
-
 $(".btn_next").on("click", function () {
     if(tim){
         clearInterval(tim);
@@ -1095,7 +1023,6 @@ $(".btn_next").on("click", function () {
         alert("已经到最后一题！");
     }
 });
-
 $(".btn_pre").on("click", function () {
     if(tim){
         clearInterval(tim);
@@ -1107,8 +1034,6 @@ $(".btn_pre").on("click", function () {
         alert("已经到最前面！");
     }
 });
-
-
 Date.prototype.Format = function (fmt) { //author: meizz
     var o = {
         "M+": this.getMonth()+1, //月份
@@ -1123,4 +1048,4 @@ Date.prototype.Format = function (fmt) { //author: meizz
     for (var k in o)
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
+};

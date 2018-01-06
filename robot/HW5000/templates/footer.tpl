@@ -2,7 +2,7 @@
 </div>
 <div class="col-xs-12 no_padding">
     <hr class="line" />
-    <div class="ver">华筑教育技有限公司</div>
+    <div class="ver">华筑教育科技有限公司</div>
     <div class="ver">www.huazhuedu.com</div>
 </div>
 

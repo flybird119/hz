@@ -1,145 +1,1 @@
-.bg-gray{
-    background-color: #f0f0f0;
-    letter-spacing: 1px;
-}
-.bg_red_light{
-    background-color:#af4645;
-}
-
-.bg_red_dark{
-    background-color:#9d3131;
-}
-.fontlogo{
-    font-weight:  400;
-    font-size: 16px;
-    color:#fff;
-}
-.font18bw{
-    font: normal 800  18px “微软雅黑”;
-    color:#fff;
-}
-
-
-.font14bg{
-    font: normal 400  14px “微软雅黑”;
-    color:#333333;
-}
-
-.font14bn{
-    font: normal 400  14px “微软雅黑”;
-    color:#000000;
-}
-
-
-
-.font14bw{
-    font: normal 600  14px “微软雅黑”;
-    color:#fff;
-}
-
-.font14bb{
-    font: normal 600  14px “微软雅黑”;
-    color:#000000;
-}
-
-
-.font14br{
-    font: normal 600  14px “微软雅黑”;
-    color:#af4645;
-}
-
-
-.title{
-    height:44px;
-}
-
-.title_label{
-    margin-top:10px;
-}
-.title_logo{
-    margin-top:12px;
-}
-
-.box_normal{
-    background-color: #fff;
-    border:1px dashed #cccccc;
-    border-radius:5px;
-
-}
-
-
-.circle {
-    width: 120px;
-    height: 120px;
-    background:#fff;
-    border-radius: 60px;
-    margin:40px auto 15px auto;
-    background-image: url("../img/logo.png");
-    background-position: center;
-    background-size: 80% ;
-    background-repeat: no-repeat;
-}
-
-
-.mobile{
-    background:url('../img/mobile.png');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-    background-position: 10px 5px;
-    background-color: #fff;
-    margin-top: 10px;
-}
-
-
-.passwd{
-    background:url('../img/pass.png');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-    background-position: 10px 5px;
-    background-color: #fff;
-    margin-top: 10px;
-}
-
-
-.valid{
-    background:url('../img/shield.png');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-    background-position: 10px 5px;
-    background-color: #fff;
-    margin-top: 10px;
-}
-
-
-.btn_get_valid{
-    margin-top: 10px;
-    width:100%;
-
-}
-
-.btn_sign{
-    margin-top: 10px;
-    width:100%;
-
-}
-
-.no_pading_left{
-    padding-left:0;
-}
-
-#code{
-    display:inline-block;
-    margin-top: 11px;
-}
-
-#login.fade.in{top:18%;}
-#buy.fade.in{top:23%;}
-#buy.fade.in{top:23%;}
-#err_div{
-    font: normal 600  12px “微软雅黑”;
-    color:#af4645;
-    margin: -5px 5px;
-}
+.bg-gray{    background-color: #f0f0f0;    letter-spacing: 1px;}.bg_red_light{    background-color:#af4645;}.bg_red_dark{    background-color:#9d3131;}.fontlogo{    font-weight:  400;    font-size: 16px;    color:#fff;}.font18bw{    font: normal 800  18px “微软雅黑”;    color:#fff;}.font14bg{    font: normal 400  14px “微软雅黑”;    color:#333333;}.font14bn{    font: normal 400  14px “微软雅黑”;    color:#000000;}.font14bw{    font: normal 600  14px “微软雅黑”;    color:#fff;}.font14bb{    font: normal 600  14px “微软雅黑”;    color:#000000;}.font14br{    font: normal 600  14px “微软雅黑”;    color:#af4645;}.title{    height:44px;}.title_label{    margin-top:10px;}.title_logo{    margin-top:12px;}.box_normal{    background-color: #fff;    border:1px dashed #cccccc;    border-radius:5px;}.circle {    width: 140px;    height: 140px;    background:#fff;    border-radius: 70px;    margin:40px auto 15px auto;    background-image: url("../img/logo.png");    background-position: center;    background-repeat: no-repeat;}.mobile{    background:url('../img/mobile.png');    background-size: 20px;    background-repeat: no-repeat;    padding-left: 40px;    background-position: 10px 5px;    background-color: #fff;    margin-top: 10px;}.passwd{    background:url('../img/pass.png');    background-size: 20px;    background-repeat: no-repeat;    padding-left: 40px;    background-position: 10px 5px;    background-color: #fff;    margin-top: 10px;}.valid{    background:url('../img/shield.png');    background-size: 20px;    background-repeat: no-repeat;    padding-left: 40px;    background-position: 10px 5px;    background-color: #fff;    margin-top: 10px;}.btn_get_valid{    margin-top: 10px;    width:100%;}.btn_sign{    margin-top: 10px;    width:100%;}.no_pading_left{    padding-left:0;}#code{    display:inline-block;    margin-top: 11px;}#login.fade.in{top:18%;}#buy.fade.in{top:23%;}#buy.fade.in{top:23%;}#err_div{    font: normal 600  12px “微软雅黑”;    color:#af4645;    margin: -5px 5px;}

@@ -176,7 +176,7 @@
         </div>
     </div>
 
-    <div class = "row bg_l ls " id="my_extend">
+    <div class = "row bg_l ls " id="chart">
         <div class="col-xs-2">
             <div class="ico">
                 <img src="./img/wallete.png" height="100%">

@@ -23,7 +23,7 @@
         });
         wx.ready(function () {
             wx.onMenuShareTimeline({
-                title: '消防考试通过了...',
+                title: '消防新干线',
                 //link: {'http://www.119kc.cn/intro.php?saler='|cat:$saler|urlencode},
                 imgUrl: 'http://www.huazhuedu.com/img/logo.png', // 分享图标
                 success: function () {
@@ -34,8 +34,8 @@
             });
 
             wx.onMenuShareAppMessage({
-                title: '消防考试通过了...',
-                desc: '消防新干线，考试都过线！！',
+                title: '消防新干线',
+                desc: '消防新干线，考试全过线!',
                 //link: {'http://www.119kc.cn/intro.php?saler='|cat:$saler|urlencode},
                 imgUrl: 'http://www.huazhuedu.com/img/logo.png',
                 type: 'link',
@@ -125,7 +125,7 @@
     <div class="row no_margin">
         <div class="col-xs-12">
             <div class="center-block text-center d_title">
-                消防职业前景
+                消防职业 “钱” 景
             </div>
         </div>
 
@@ -135,7 +135,7 @@
             </div>
         </div>
         <div class="d_p">
-            &nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;近年来，我国经济高速发展和城市化进程快速推进给社会消防工作提出了更高的要求。而我国的消防事业由于底子薄等原因导致发展形势极其紧迫，特别是消防行业从业人员和管理人才稀缺，从业人员对专业的掌握程度不高。在这一时代背景下，作为从事消防行业必备证书的建（构）筑物消防员证书的含金量升值空间明显。
+            &nbsp;&nbsp;&nbsp;&nbsp;近年来，我国经济高速发展和城市化进程快速推进给社会消防工作提出了更高的要求。而我国的消防事业由于底子薄等原因导致发展形势极其紧迫，特别是消防行业从业人员和管理人才稀缺，从业人员对专业的掌握程度不高。据统计，我国对于建（构）筑物消防员还有五十万的人才缺口。在这一时代背景下，作为从事消防行业必备证书的建（构）筑物消防员证书的含金量升值空间明显。在京津、长三角和珠三角等地区，拥有建（构）筑物消防员证书，月薪都在6000元以上，其他地区拥有证书的人才月薪也在4000以上。
         </div>
         <div class="d_p thumbnail">
             <img src="./img/pei_01.png"/>
@@ -175,9 +175,10 @@
                     <div class="box_list">1.单位的主要负责人是本单位的消防安全负责人。</div>
                     <div class="box_list">2.消防安全重点单位需要确定本单位的消防安全管理人，组织实施本单位的消防安全管理工作。</div>
                     <div class="box_list">3.从事自动消防系统的操作人员，必须持证上岗。</div>
-                    <div class="box_title">中华人民共和国公安部令第61号</div>
-                    <div class="box_list">1.单位的消防安全责任人、消防安全管理人，应当接受消防安全专门培训。</div>
-                    <div class="box_list">2.单位应当遵守消防法律、法规、规章，贯彻预防为主、防消结合的消防工作方针，履行消防安全职责，保障消防安全。</div>
+                    <div class="box_title">消防安全责任制实施办法</div>
+                    <div class="box_list">1.机关、团体、企业、事业等单位设有消防控制室的，实行24小时值班制度，每班不少于2人，并持证上岗。</div>
+                    <div class="box_list">2.消防安全责任人、消防安全管理人、特有工种人员须经消防安全培训；自动消防设施操作人员应取得建（构）筑物消防员资格证书。
+                    </div>
                 </div>
                 <div class="c_right_2"></div>
             </div>
