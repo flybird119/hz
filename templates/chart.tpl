@@ -1,6 +1,9 @@
 {include file='header.tpl'}
 {include file='red_header.tpl'}
-<body>
-<div id="main"></div>
-</body>
+<div class="container">
+    <div class="row">
+        <div id="main"></div>
+    </div>
+</div>
+
 {include file='footer.tpl'}
